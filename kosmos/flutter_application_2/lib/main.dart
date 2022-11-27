@@ -1,5 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -12,32 +13,39 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.cyan,
-        ),
-        home: Scaffold(
-          appBar: AppBar(),
-          body: Center(
-            child: Column(children:<Widget>  [
-              kimlik("Oguzhan"," Zeybek", 21),
-              kimlik("bilal"," kar", 21),
-              kimlik("Oguzhan"," senuysal", 21),
-              kimlik("tunahan","kozan", 21),
+      debugShowCheckedModeBanner: false,
+      title: 'PROJEM',
+      theme: ThemeData(
+        primarySwatch: Colors.cyan,
+      ),
+      home: const deneme(),
+    );
+  }
+}
+// ignore: camel_case_types
+class deneme extends StatelessWidget {
+  const deneme({super.key});
 
-            ],),
-          )
-        ));
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:AppBar(),
+      body: const yeni(),
+    );
   }
 }
 
-class kimlik extends StatelessWidget {
-  final String isim;
-  final String soyad;
-  final int yas;
-  kimlik(this.isim,this.soyad,this.yas);
+// ignore: camel_case_types
+class yeni extends StatelessWidget {
+  const yeni({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Text("isim: $isim soyisim: $soyad yas: $yas");
+    return ElevatedButton(onPressed: (){
+
+      Scaffold.of(context).showBottomSheet((context) => const Text("NAAAABERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",style:TextStyle( color: Colors.blue),),);
+    }, child: const Text("EVEEET AYNEN OYLE"),
+
+    );
   }
 }
