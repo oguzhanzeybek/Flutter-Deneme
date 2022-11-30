@@ -34,15 +34,16 @@ class girissayfasi extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColorLight,
       // ignore: prefer_const_literals_to_create_immutables
       body: Container(
-        
         child: Column(
-          
-        
           children: <Widget>[
-            SizedBox(height: 39.0,),
+            const SizedBox(
+              height: 39.0,
+            ),
             // ignore: prefer_const_constructors
             Center(child: flutterLogo),
-            SizedBox(height: 18.0,),
+            const SizedBox(
+              height: 18.0,
+            ),
             const Text(
               "Flutter Team",
               style: TextStyle(
@@ -51,6 +52,34 @@ class girissayfasi extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic),
             ),
+            const SizedBox(
+              height: 30.0,
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Text("Mail ile giriş butonu"),
+                  Text("Facebook veya gmail ile giriş butonu"),
+                ],
+              ),
+
+              //padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20) ,
+              //padding: EdgeInsets.all(10.0),
+              //margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+              //margin: EdgeInsets.all(10.0),
+              alignment: const Alignment.Center,
+              width: MediaQuery.of(context).size.width - 40,
+              height: 159.0,
+              color: Colors.white70,
+              
+                
+
+                //padding: EdgeInsets.all(40.0),
+                //  width: 1800.0,
+                // height: 1350.0,
+                // color: Colors.blueGrey,
+              ),
+            
           ],
         ),
       ),
