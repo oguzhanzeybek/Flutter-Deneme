@@ -55,31 +55,53 @@ class girissayfasi extends StatelessWidget {
             const SizedBox(
               height: 30.0,
             ),
-            Container(
-              child: Column(
-                children: [
-                  Text("Mail ile giriş butonu"),
-                  Text("Facebook veya gmail ile giriş butonu"),
-                ],
-              ),
-
-              //padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20) ,
-              //padding: EdgeInsets.all(10.0),
-              //margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-              //margin: EdgeInsets.all(10.0),
-              alignment: const Alignment.Center,
-              width: MediaQuery.of(context).size.width - 40,
-              height: 159.0,
-              color: Colors.white70,
-              
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
                 
+
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "mail ile giriş",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      width: double.infinity,
+                      height: 28.0,
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurpleAccent,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text("mail ve facebook ile giriş butonu"),
+                      ],
+                    ),
+                  ],
+                ),
+
+                //padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20) ,
+                //padding: EdgeInsets.all(10.0),
+                //margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                //margin: EdgeInsets.all(10.0),
+                alignment: const Alignment(0, -0.6),
+                width: MediaQuery.of(context).size.width - 40,
+                height: 159.0,
+                color: Colors.white70,
 
                 //padding: EdgeInsets.all(40.0),
                 //  width: 1800.0,
                 // height: 1350.0,
                 // color: Colors.blueGrey,
               ),
-            
+            ),
           ],
         ),
       ),
