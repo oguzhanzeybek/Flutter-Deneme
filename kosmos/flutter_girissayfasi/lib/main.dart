@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,8 +40,9 @@ class girissayfasi extends StatelessWidget {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20000),
                   image:
-                      DecorationImage(image: AssetImage("assets/resim1.jpg"))),
+                      DecorationImage(image: AssetImage("assets/resim1.jpg",), fit: BoxFit.cover, ),),
             ),
             const SizedBox(
               height: 23,
