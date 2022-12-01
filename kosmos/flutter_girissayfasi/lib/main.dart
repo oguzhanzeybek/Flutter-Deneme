@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,85 +20,152 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class girissayfasi extends StatelessWidget {
   const girissayfasi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
-    var flutterLogo = FlutterLogo(
-      size: 135.0,
-    );
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorLight,
-      // ignore: prefer_const_literals_to_create_immutables
-      body: Container(
+      body: Center(
         child: Column(
-          children: <Widget>[
+          children: [
             const SizedBox(
-              height: 39.0,
+              height: 50,
             ),
-            // ignore: prefer_const_constructors
-            Center(child: flutterLogo),
+            const FlutterLogo(size: 130.0, textColor: Colors.grey),
             const SizedBox(
-              height: 18.0,
+              height: 23,
             ),
             const Text(
-              "Flutter Team",
+              "Fisandun",
               style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic),
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.deepPurple,
+              ),
             ),
             const SizedBox(
-              height: 30.0,
+              height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Material(
+              borderRadius: BorderRadius.circular(100.0),
+              elevation: 40,
               child: Container(
-                
-
+                // ignore: sort_child_properties_last
                 child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "mail ile giriş",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w400),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Material(
+                          borderRadius: BorderRadius.circular(100.0),
+                          elevation: 40,
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: double.infinity,
+                            height: 52.0,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(colors: [
+                                Colors.pink,
+                                Colors.cyan,
+                              ]),
+                              color: Colors.purpleAccent,
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: const Text(
+                              "Kullanıcı adı ile giriş",
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: 23.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      width: double.infinity,
-                      height: 28.0,
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurpleAccent,
-                        borderRadius: BorderRadius.circular(20),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Material(
+                                elevation: 40,
+                                borderRadius: BorderRadius.circular(100.0),
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 52.0,
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(colors: [
+                                      Colors.indigo,
+                                      Colors.indigoAccent,
+                                    ]),
+                                    color: Colors.purpleAccent,
+                                    borderRadius: BorderRadius.circular(100.0),
+                                  ),
+                                  child: const Text(
+                                    "Mail ile giriş",
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 19.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: Material(
+                                elevation: 40,
+                                borderRadius: BorderRadius.circular(100.0),
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 52.0,
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(colors: [
+                                      Colors.purple,
+                                      Colors.purpleAccent,
+                                    ]),
+                                    color: Colors.purpleAccent,
+                                    borderRadius: BorderRadius.circular(100.0),
+                                  ),
+                                  child: const Text(
+                                    "Facebook ile giriş",
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 19.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Text("mail ve facebook ile giriş butonu"),
-                      ],
-                    ),
-                  ],
+                    ]),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Color.fromARGB(255, 230, 116, 250),
+                        Color.fromARGB(255, 6, 223, 251),
+                      ]),
+                  color: Colors.purpleAccent,
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
-
-                //padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20) ,
-                //padding: EdgeInsets.all(10.0),
-                //margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                //margin: EdgeInsets.all(10.0),
-                alignment: const Alignment(0, -0.6),
-                width: MediaQuery.of(context).size.width - 40,
-                height: 159.0,
-                color: Colors.white70,
-
-                //padding: EdgeInsets.all(40.0),
-                //  width: 1800.0,
-                // height: 1350.0,
-                // color: Colors.blueGrey,
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width - 80,
+                height: 200,
               ),
             ),
           ],
