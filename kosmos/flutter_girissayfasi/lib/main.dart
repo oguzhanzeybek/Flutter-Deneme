@@ -34,7 +34,13 @@ class girissayfasi extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            const FlutterLogo(size: 130.0, textColor: Colors.grey),
+            Container(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                  image:
+                      DecorationImage(image: AssetImage("assets/resim1.jpg"))),
+            ),
             const SizedBox(
               height: 23,
             ),
