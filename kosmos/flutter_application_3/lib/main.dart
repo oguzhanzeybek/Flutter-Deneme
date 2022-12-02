@@ -1,22 +1,17 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_import, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, unnecessary_import, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:flutter_application_3/profilsayfasi.dart';
 import 'gonderikarti.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,10 +59,25 @@ class _AnaSayfaState extends State<AnaSayfa> {
           IconButton(
             icon: Icon(
               Icons.notifications,
-              color: Colors.pinkAccent,
+              color: Colors.pink,
               size: 32.0,
             ),
-            onPressed: () {},
+            onPressed: () {
+              showBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Column(
+                      children: <Widget>[
+                        Row(
+                          children: [
+                            Text("ege seni takip etti"),
+                            Text("3 dakika once"),
+                          ],
+                        )
+                      ],
+                    );
+                  });
+            },
           ),
         ],
       ),
@@ -88,20 +98,41 @@ class _AnaSayfaState extends State<AnaSayfa> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                profilKartiOlustur("jessica Black",
-                    "https://cdn.pixabay.com/photo/2022/11/04/16/24/wedding-7570266_960_720.jpg"),
-                profilKartiOlustur("ozi",
-                    "https://cdn.pixabay.com/photo/2022/10/22/06/03/mountains-7538471_960_720.jpg"),
-                profilKartiOlustur("mehmet",
-                    "https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_960_720.jpg"),
-                profilKartiOlustur("furkan",
-                    "https://cdn.pixabay.com/photo/2018/03/12/12/32/woman-3219507_960_720.jpg"),
-                profilKartiOlustur("ali",
-                    "https://cdn.pixabay.com/photo/2017/07/27/00/46/fantasy-2543658_960_720.jpg"),
-                profilKartiOlustur("tunahan",
-                    "https://cdn.pixabay.com/photo/2019/04/06/06/44/astronaut-4106766_960_720.jpg"),
-                profilKartiOlustur("abdurrahman",
-                    "https://cdn.pixabay.com/photo/2021/04/13/06/59/woman-6174830_960_720.jpg")
+                profilKartiOlustur(
+                    "jessica Black",
+                    "https://cdn.pixabay.com/photo/2020/12/27/14/37/woman-5864279_960_720.jpg",
+                    "jessica_black",
+                    "https://cdn.pixabay.com/photo/2022/11/07/17/20/city-7576853_960_720.jpg"),
+                profilKartiOlustur(
+                    "ozi",
+                    "https://cdn.pixabay.com/photo/2022/10/22/06/03/mountains-7538471_960_720.jpg",
+                    "ozi19503",
+                    "https://cdn.pixabay.com/photo/2022/11/13/18/50/autumn-7589934_960_720.jpg"),
+                profilKartiOlustur(
+                    "mehmet",
+                    "https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_960_720.jpg",
+                    "mehmetonur",
+                    "https://cdn.pixabay.com/photo/2021/10/20/11/18/trail-riding-6725753_960_720.jpg"),
+                profilKartiOlustur(
+                    "furkan",
+                    "https://cdn.pixabay.com/photo/2018/03/12/12/32/woman-3219507_960_720.jpg",
+                    "fukitobakhele",
+                    "https://cdn.pixabay.com/photo/2022/11/08/05/53/fall-7577769_960_720.jpg"),
+                profilKartiOlustur(
+                    "ali",
+                    "https://cdn.pixabay.com/photo/2017/07/27/00/46/fantasy-2543658_960_720.jpg",
+                    "alihakanorman",
+                    "https://cdn.pixabay.com/photo/2022/10/01/15/51/gartenbank-7491775_960_720.jpg"),
+                profilKartiOlustur(
+                    "tunahan",
+                    "https://cdn.pixabay.com/photo/2019/04/06/06/44/astronaut-4106766_960_720.jpg",
+                    "tunahankozan",
+                    "https://cdn.pixabay.com/photo/2022/10/17/17/37/sea-7528351_960_720.jpg"),
+                profilKartiOlustur(
+                    "abdurrahman",
+                    "https://cdn.pixabay.com/photo/2021/04/13/06/59/woman-6174830_960_720.jpg",
+                    "bilalkar",
+                    "https://cdn.pixabay.com/photo/2016/02/01/16/10/eye-1173863_960_720.jpg")
               ],
             ),
           ),
@@ -110,7 +141,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
           ),
           gonderikarti(
             profilresimlinki:
-                "https://cdn.pixabay.com/photo/2018/03/06/22/57/portrait-3204843_960_720.jpg",
+                "https://cdn.pixabay.com/photo/2020/12/27/14/37/woman-5864279_960_720.jpg",
             gonderiresimlinki:
                 "https://cdn.pixabay.com/photo/2022/08/25/09/35/germany-7409782_960_720.jpg",
             isimsoyad: "jessıca Black",
@@ -167,19 +198,23 @@ class _AnaSayfaState extends State<AnaSayfa> {
     );
   }
 
-  Material profilKartiOlustur(String kullaniciadi, String resimlinki) {
+  Material profilKartiOlustur(String kullaniciadi, String resimlinki,
+      String isimsoyad, String kapakresimlinki) {
     return Material(
-      
       child: InkWell(
-        borderRadius: BorderRadius.circular(500),
-        onTap: () {
-
-
-
-          Navigator.push( context, MaterialPageRoute(builder: ( BuildContext (context) =>  profilsayfasi()) ));
-
-
-
+        onTap: () async {
+          bool donenveri = await Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+            return profilsayfasi(
+              profilresimlinki: resimlinki,
+              kullaniciadi: kullaniciadi,
+              isimsoyad: isimsoyad,
+              kapakresimlinki: kapakresimlinki,
+            );
+          }));
+          if (donenveri) {
+            print("Kullanıcı profil sayfasına döndü");
+          }
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 4.0, right: 4.0),
@@ -188,19 +223,22 @@ class _AnaSayfaState extends State<AnaSayfa> {
               Stack(
                 alignment: AlignmentDirectional.topEnd,
                 children: [
-                  Container(
-                    width: 70.0,
-                    height: 70.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(35.0),
-                      color: Colors.white,
-                      border: Border.all(
-                        width: 3.0,
+                  Hero(
+                    tag: kullaniciadi,
+                    child: Container(
+                      width: 70.0,
+                      height: 70.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(35.0),
                         color: Colors.white,
-                      ),
-                      image: DecorationImage(
-                        image: NetworkImage(resimlinki),
-                        fit: BoxFit.cover,
+                        border: Border.all(
+                          width: 3.0,
+                          color: Colors.white,
+                        ),
+                        image: DecorationImage(
+                          image: NetworkImage(resimlinki),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -227,20 +265,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class profilsayfasi extends StatelessWidget {
-  const profilsayfasi({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("profil sayfası"),
       ),
     );
   }
