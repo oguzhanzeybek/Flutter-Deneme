@@ -124,7 +124,7 @@ class profilsayfasi extends StatelessWidget {
                       },
                       icon: Icon(
                         Icons.arrow_back_ios_new,
-                        color: Colors.black,
+                        color: Colors.white,
                       ))),
             ],
           ),
