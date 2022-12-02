@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unused_import
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColorLight: Colors.cyanAccent,
@@ -40,9 +43,14 @@ class girissayfasi extends StatelessWidget {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20000),
-                  image:
-                      DecorationImage(image: AssetImage("assets/resim1.jpg",), fit: BoxFit.cover, ),),
+                borderRadius: BorderRadius.circular(20000),
+                image: DecorationImage(
+                  image: AssetImage(
+                    "assets/resim1.jpg",
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             const SizedBox(
               height: 23,
