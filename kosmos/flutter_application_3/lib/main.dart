@@ -63,7 +63,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 size: 32.0,
               ),
               onPressed: () {
-                showBottomSheet(
+                showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
                       return Column(
