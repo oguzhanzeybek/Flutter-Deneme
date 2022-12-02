@@ -63,14 +63,15 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 size: 32.0,
               ),
               onPressed: () {
+                //showmodalsheet kullan bu durumda
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
                       return Column(
                         children: <Widget>[
                           duyuru("ege seni takip etti", "5 dakika önce"),
-                          duyuru("ege seni takip etti", "5 dakika önce"),
-                          duyuru("ege seni takip etti", "5 dakika önce"),
+                          duyuru("abdurrahman senı begendı", "5 saat önce"),
+                          duyuru("tunahan sevgili yaptı", "10 gün önce"),
                         ],
                       );
                     });
