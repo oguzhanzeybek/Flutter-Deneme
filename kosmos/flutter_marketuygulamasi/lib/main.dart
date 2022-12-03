@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: unnecessary_import, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, prefer_final_fields, implementation_imports
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart';
+import 'package:flutter_marketuygulamasi/sepetim.dart';
+import 'package:flutter_marketuygulamasi/urunler.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,16 +31,15 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
+  int _aktificerikno = 0;
+
   late List _icerikler;
 
   @override
   void initState() {
     super.initState();
 
-    _icerikler = [
-      Text("icerik1"),
-      Text("icerik2"),
-    ];
+    _icerikler = [urunler(), sepetim()];
   }
 
   @override
@@ -58,14 +59,62 @@ class _AnaSayfaState extends State<AnaSayfa> {
           ),
         ),
       ),
-      body: _icerikler[0],
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem> [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label:"b"),
-              
-        ],
+      body: _icerikler[_aktificerikno],
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.all(0.0),
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2020/10/09/13/12/man-5640540_960_720.jpg",
+                      ),
+                      fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(60),
+                ),
+              ),
+              decoration: BoxDecoration(color: Colors.black),
+              accountName: Text(
+                "Oguzhan Zeybek",
+                style: TextStyle(color: Colors.white),
+              ),
+              accountEmail: Text(
+                "darkstroge@gmail.com",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(title: Text("Siparişlerim"),onTap: () {},),
+            ListTile(title: Text("ayarlar"),onTap: () {},),
+            ListTile(title: Text("kuponalrım"),onTap: () {},),
+            ListTile(title: Text("indirimmlerim"),onTap: () {},),
+            ListTile(title: Text("cıkıs yap"),onTap: () {
+              Navigator.pop(context);
+            },),
+
+          ],
+        ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _aktificerikno,
+          selectedItemColor: Color.fromARGB(255, 1, 250, 129),
+          selectedFontSize: 20,
+          unselectedFontSize: 17,
+          unselectedItemColor: Colors.black,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Ürünler",
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: "Sepetim"),
+          ],
+          onTap: (int tiklananbutonpozisyonno) {
+            setState(() {
+              _aktificerikno = tiklananbutonpozisyonno;
+            });
+          }),
     );
   }
 }
