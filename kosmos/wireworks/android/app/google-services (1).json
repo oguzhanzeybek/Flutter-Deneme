@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "645216141904",
+    "project_id": "deneme-6bcf1",
+    "storage_bucket": "deneme-6bcf1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645216141904:android:b186073516ff4f7320c755",
+        "android_client_info": {
+          "package_name": "com.example.wireworks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645216141904-i27mg48ea8t09fbd6gorm9g6mvbcm7ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQaDdOPSplw6ttvtiIzt06LFMvHzr9850"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645216141904-i27mg48ea8t09fbd6gorm9g6mvbcm7ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
