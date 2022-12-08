@@ -1,3 +1,5 @@
+
+
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
@@ -10,8 +12,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late String username;
-  late String password;
+   late String password = "kullanıcı adı yanlıs";
+   late String  username = "Kullanıcı adı ";
+   
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -25,6 +28,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+
+
                 TextFormField(
                   //autovalidateMode: true,
                   decoration: InputDecoration(
@@ -49,6 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 10.0,
                 ),
+
+
                 TextFormField(
                   //autovalidateMode: true,
                   decoration: InputDecoration(
@@ -67,14 +75,14 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   }),
                   onSaved: (value) {
-                    username = value!;
+                    password = value!;
                   },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MaterialButton(
-                      child: Text("Üye ol"),
+                      child: Text("Giriş Yap"),
                       onPressed: () {},
                     ),
                     MaterialButton(
@@ -90,8 +98,8 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _loginButton() => ElevatedButton(
-        onPressed: () {
+  Widget _loginButton ()  => ElevatedButton(
+         onPressed: () async {
           if (_formkey.currentState!.validate()) {
             _formkey.currentState!.save();
             debugPrint("username : $username , password : $password");
