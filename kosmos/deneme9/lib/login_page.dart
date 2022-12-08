@@ -21,13 +21,23 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20.0),
             child: TextFormField(
+              //autovalidateMode: true,
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.purple),
                 ),
                 labelText: "KULLANICI ADI",
                 labelStyle: TextStyle(color: Colors.purple),
+                border: OutlineInputBorder(),
               ),
+              validator: ((value) {
+                if (value == "") {
+                  return "kullanıcı adını giriniz.";
+                }
+                else{
+                  return null;
+                }
+              }),
             ),
           )
         ],
