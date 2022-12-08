@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682751660638",
+    "project_id": "ikii-iki",
+    "storage_bucket": "ikii-iki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682751660638:android:7deaa4fdbd2fbae67f1acf",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682751660638-sto0qc63ndfgot054mh835da6fl34l72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMnxsanNxyc1pTq-fUTsdvMCVoObJRdg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682751660638-sto0qc63ndfgot054mh835da6fl34l72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
