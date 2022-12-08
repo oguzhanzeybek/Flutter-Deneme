@@ -102,10 +102,25 @@ class _LoginPageState extends State<LoginPage> {
          onPressed: () async {
           if (_formkey.currentState!.validate()) {
             _formkey.currentState!.save();
-            debugPrint("username : $username , password : $password");
+            if(username == "a" && password == "b"){
+              debugPrint("giriş başarılı");
+            } else{
+              showDialog(barrierDismissible: false,context: context, builder: (BuildContext  context) { 
+                return AlertDialog(
+                  title: Text("Hata!"),
+                  content: Text("giriş bilgileriniz hatalı"),
+                  actions: [
+                    MaterialButton(child: Text("geri dön"),onPressed:(() => Navigator.pop(context)))
+                  ],
+                );
+                
+              });
+            }
           }
         },
         child: Text("Giriş Yap"),
         
       );
 }
+
+
