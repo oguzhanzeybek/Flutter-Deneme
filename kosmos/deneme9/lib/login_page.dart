@@ -92,11 +92,12 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginButton() => ElevatedButton(
         onPressed: () {
-          if( _formkey.currentState!.validate()){
+          if (_formkey.currentState!.validate()) {
             _formkey.currentState!.save();
+            debugPrint("username : $username , password : $password");
           }
-          
         },
         child: Text("Giriş Yap"),
+        
       );
 }
