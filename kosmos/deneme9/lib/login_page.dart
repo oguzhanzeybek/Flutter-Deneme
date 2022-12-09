@@ -27,30 +27,22 @@ class _LoginPageState extends State<LoginPage> {
                     height: 120,
                     width: 60,
                     decoration: BoxDecoration(
-                      color: Colors.deepPurpleAccent,
+                      color: Color.fromARGB(255, 34, 1, 125),
                     ),
                   ),
                 ),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(color: Colors.purple),
-                ),
+                
                 Expanded(
                   child: Container(
                     height: 60,
                     width: 220,
-                    decoration: BoxDecoration(color: Color.fromARGB(255, 42, 4, 49)),
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 4, 15, 102)),
                   ),
                 ),
-                Container(
-                  height: 110,
-                  width: 45,
-                  decoration: BoxDecoration(color: Colors.blue),
-                ),
+                
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(color: Color.fromARGB(255, 90, 103, 104)),
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 129, 25, 113)),
                     height: 200,
                   ),
                 )
