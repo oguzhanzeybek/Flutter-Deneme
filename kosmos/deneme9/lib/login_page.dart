@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,139 +8,136 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late String password = "kullanıcı adı yanlıs";
-  late String username = "Kullanıcı adı ";
-
-  final _formkey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body:   Form( 
-          key: _formkey,
-
-          
-          
-          
-            
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column( crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Image( 
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/ustfoto.png",),),
-                  ],
+      backgroundColor: Color.fromARGB(255, 82, 11, 181),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: height * .30,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/images/foto22.png"),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    //autovalidateMode: true,
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
-                      ),
-                      labelText: "Kullanıcı Adı",
-                      labelStyle: TextStyle(color: Colors.purple),
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: ((value) {
-                      if (value == "") {
-                        return "kullanıcı adını giriniz.";
-                      } else {
-                        return null;
-                      }
-                    }),
-                    onSaved: (value) {
-                      username = value!;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    //autovalidateMode: true,
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
-                      ),
-                      labelText: "Şifre",
-                      labelStyle: TextStyle(color: Colors.purple),
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: ((value) {
-                      if (value == "") {
-                        return "Şifrenizi giriniz.";
-                      } else {
-                        return null;
-                      }
-                    }),
-                    onSaved: (value) {
-                      password = value!;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      MaterialButton(
-                        child: Text("Giriş Yap"),
-                        onPressed: () {},
-                      ),
-                      MaterialButton(
-                        child: Text("Şifremi unuttum "),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-                _loginButton(),
-                Column( crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Image( 
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/altfoto.png",),),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Merhaba, \nhoşgeldin.",
+                    style: TextStyle(
+                        fontSize: 33.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  TextField(
+                    decoration: custominputdecoration("kullanıcı adı"),
+                  ),
+                  bosluk(),
+                  TextField(
+                    decoration: custominputdecoration("şifre"),
+                  ),
+                  bosluk(),
+                  Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        height: 50,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(60)),
+                        child: Center(
+                          child: Text(
+                            "Şifremi unuttum",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 217, 3, 74),
+                                fontSize: 19,
+                                fontWeight: FontWeight.w400
+                                
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  bosluk(),
+                  Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        height: 50,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Giriş Yap",
+                            style: TextStyle(color: Colors.white, fontSize: 19),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  bosluk(),
+                  Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        height: 50,
+                        width: 150,
+                        
+                        child: Center(
+                          child: Text(
+                            "Kayıt Ol",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 4, 202, 10),
+                                fontSize: 19 ,
+                                fontWeight: FontWeight.w500
+                            ),
+                          ),
+                        ),
+                        
+                      ),
+                    ),
+                  ), 
+                ], 
+              ),
+            )
+          ], 
           
+        ),  
+      ), 
+      
+      
     );
+    
   }
 
-  Widget _loginButton() => ElevatedButton(
-        onPressed: () async {
-          if (_formkey.currentState!.validate()) {
-            _formkey.currentState!.save();
-            if (username == "a" && password == "b") {
-              debugPrint("giriş başarılı");
-            } else {
-              showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text("Hata!"),
-                      content: Text("giriş bilgileriniz hatalı"),
-                      actions: [
-                        MaterialButton(
-                            child: Text("geri dön"),
-                            onPressed: (() => Navigator.pop(context)))
-                      ],
-                    );
-                  });
-            }
-          }
-        },
-        child: Text("Giriş Yap"),
+  Widget bosluk() => SizedBox(
+        height: 15,
       );
+
+  InputDecoration custominputdecoration(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: TextStyle(
+        color: Colors.grey,
+      ),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey),
+      ),
+    );
+  }
 }
