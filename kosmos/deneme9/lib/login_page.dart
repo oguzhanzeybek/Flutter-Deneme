@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 82, 11, 181),
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+            SizedBox(height: 25,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -39,13 +42,13 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white),
                   ),
                   TextField(
-                    decoration: custominputdecoration("kullanıcı adı"),
+                    decoration: custominputdecoration("kullanıcı adı",Colors.white,Colors.white),
                   ),
-                  bosluk(),
+                  space15(),
                   TextField(
-                    decoration: custominputdecoration("şifre"),
+                    decoration: custominputdecoration("şifre",Colors.white,Colors.white),
                   ),
-                  bosluk(),
+                  space15(),
                   Center(
                     child: TextButton(
                       onPressed: () {},
@@ -58,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "Şifremi unuttum",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 217, 3, 74),
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 19,
                                 fontWeight: FontWeight.w400
                                 
@@ -68,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  bosluk(),
+                  space15(),
                   Center(
                     child: TextButton(
                       onPressed: () {},
@@ -87,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  bosluk(),
+                  space15(),
                   Center(
                     child: TextButton(
                       onPressed: () {},
@@ -99,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "Kayıt Ol",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 4, 202, 10),
+                              color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 19 ,
                                 fontWeight: FontWeight.w500
                             ),
@@ -122,21 +125,21 @@ class _LoginPageState extends State<LoginPage> {
     
   }
 
-  Widget bosluk() => SizedBox(
+  Widget space15() => SizedBox(
         height: 15,
       );
 
-  InputDecoration custominputdecoration(String hintText) {
+  InputDecoration custominputdecoration(String hintText,Color firstColor, Color secondColor) {
     return InputDecoration(
       hintText: hintText,
       hintStyle: TextStyle(
-        color: Colors.grey,
+        color: Color.fromARGB(255, 255, 255, 255),
       ),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: BorderSide(color:firstColor),
       ),
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: BorderSide(color: secondColor),
       ),
     );
   }
