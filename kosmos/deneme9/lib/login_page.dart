@@ -63,12 +63,12 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                  TextField(
+                  TextField( style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),),
                     decoration: custominputdecoration(
                         "kullanıcı adı", Colors.white, Colors.white),
                   ),
                   space15(),
-                  TextField(
+                  TextField( style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),),
                     decoration: custominputdecoration(
                         "şifre", Colors.white, Colors.white),
                   ),
@@ -130,31 +130,82 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                
+                
+
+                
+
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 45, 7, 201)),
+                    height: 200,
+                  ),
+                ),
+
+
+                 Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 129, 25, 124)),
+                    height: 40,
+                  ),
+                ),
+
+
+
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 34, 1, 125),
+                    ),
+                  ),
+                ),
+                
+
+
+                
+
+
+
+              ],
+            ),
                 ],
+                
               ),
             )
           ],
+          
         ),
+        
       ),
+      
     );
+
+    
   }
 
   Widget space15() => SizedBox(
         height: 15,
       );
 
-  InputDecoration custominputdecoration(
-      String hintText, Color firstColor, Color secondColor) {
-    return InputDecoration(
+  InputDecoration custominputdecoration( 
+    
+      String hintText, Color firstColor, Color secondColor) {  
+       
+    return InputDecoration( 
       hintText: hintText,
-      hintStyle: TextStyle(
+      hintStyle:  TextStyle( 
         color: Color.fromARGB(255, 255, 255, 255),
       ),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: firstColor),
       ),
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: secondColor),
+        borderSide: BorderSide(color: secondColor,),
       ),
     );
   }
