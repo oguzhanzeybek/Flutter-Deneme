@@ -19,16 +19,46 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: height * .30,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/images/foto22.png"),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(color: Colors.purple),
+                ),
+                Expanded(
+                  child: Container(
+                    height: 60,
+                    width: 220,
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 42, 4, 49)),
+                  ),
+                ),
+                Container(
+                  height: 110,
+                  width: 45,
+                  decoration: BoxDecoration(color: Colors.blue),
+                ),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 90, 103, 104)),
+                    height: 200,
+                  ),
+                )
+              ],
             ),
-            SizedBox(height: 25,),
+            SizedBox(
+              height: 25,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -42,11 +72,13 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white),
                   ),
                   TextField(
-                    decoration: custominputdecoration("kullanıcı adı",Colors.white,Colors.white),
+                    decoration: custominputdecoration(
+                        "kullanıcı adı", Colors.white, Colors.white),
                   ),
                   space15(),
                   TextField(
-                    decoration: custominputdecoration("şifre",Colors.white,Colors.white),
+                    decoration: custominputdecoration(
+                        "şifre", Colors.white, Colors.white),
                   ),
                   space15(),
                   Center(
@@ -63,9 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                                 color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 19,
-                                fontWeight: FontWeight.w400
-                                
-                                ),
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
                       ),
@@ -90,53 +120,46 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  space15(),
                   Center(
                     child: TextButton(
                       onPressed: () {},
                       child: Container(
                         height: 50,
                         width: 150,
-                        
                         child: Center(
                           child: Text(
                             "Kayıt Ol",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 19 ,
-                                fontWeight: FontWeight.w500
-                            ),
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 19,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
-                        
                       ),
                     ),
-                  ), 
-                ], 
+                  ),
+                ],
               ),
             )
-          ], 
-          
-        ),  
-      ), 
-      
-      
+          ],
+        ),
+      ),
     );
-    
   }
 
   Widget space15() => SizedBox(
         height: 15,
       );
 
-  InputDecoration custominputdecoration(String hintText,Color firstColor, Color secondColor) {
+  InputDecoration custominputdecoration(
+      String hintText, Color firstColor, Color secondColor) {
     return InputDecoration(
       hintText: hintText,
       hintStyle: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
       ),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color:firstColor),
+        borderSide: BorderSide(color: firstColor),
       ),
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: secondColor),
