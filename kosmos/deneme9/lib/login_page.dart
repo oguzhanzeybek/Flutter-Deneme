@@ -132,6 +132,7 @@ class _Login_PageState extends State<Login_Page> {
       child: Container(
         height: 50,
         width: 150,
+        margin: EdgeInsets.symmetric(horizontal: 60),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(60),
         ),

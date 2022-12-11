@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:math';
+
 import 'package:deneme9/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +14,9 @@ class signup extends StatefulWidget {
 }
 
 class _signupState extends State<signup> {
-   late String email,password;
-   final formkey = GlobalKey<FormState>();
-   final firebaseAuth = FirebaseAuth.instance;
+  late String email, password;
+  final formkey = GlobalKey<FormState>();
+  final firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -116,10 +118,16 @@ class _signupState extends State<signup> {
 
   TextButton signimbutton() {
     return TextButton(
-      onPressed: () {
-        if(formkey.currentState!.validate()){
+      onPressed: () async {
+        if (formkey.currentState!.validate()) {
           formkey.currentState!.save();
-          
+          try {
+            var userresult = await firebaseAuth.createUserWithEmailAndPassword(
+                email: email, password: password);
+                print(userresult.user!.uid);
+          } catch (e) {}
+        } else {
+          print(e.toString());
         }
       },
       child: Container(
@@ -171,13 +179,13 @@ class _signupState extends State<signup> {
   TextFormField emailtextfield() {
     return TextFormField(
       validator: (value) {
-        if(value!.isEmpty){
+        if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else{}
+        } else {}
       },
       onSaved: (value) {
-        email =value!; 
-      } ,
+        email = value!;
+      },
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
       ),
@@ -188,13 +196,13 @@ class _signupState extends State<signup> {
   TextFormField passwordtextfield() {
     return TextFormField(
       validator: (value) {
-        if(value!.isEmpty){
+        if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else{}
+        } else {}
       },
       onSaved: (value) {
-        password =value!; 
-      } ,   
+        password = value!;
+      },
       obscureText: true,
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
