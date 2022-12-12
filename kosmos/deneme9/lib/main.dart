@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "projem",
       routes: {
-        //"/loginpage": (context) =>  Login_Page(),
-       // "/signup": (context) =>  signup(),
+        "/loginpage": (context) =>  Login_Page(),
+        "/signup": (context) =>  signup(),
 
       },
       home: Login_Page(),

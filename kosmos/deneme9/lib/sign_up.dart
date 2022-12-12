@@ -124,8 +124,15 @@ class _signupState extends State<signup> {
           try {
             var userresult = await firebaseAuth.createUserWithEmailAndPassword(
                 email: email, password: password);
-                print(userresult.user!.uid);
-          } catch (e) {}
+            print(userresult.user!.uid);
+            formkey.currentState!.reset();
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("giriş yapıldı,anasayfaya yonlendırılıyosunuz."),
+              ),
+            );
+            Navigator.pushReplacementNamed(context, "/loginpage"); 
+          } catch (e) {}  
         } else {
           print(e.toString());
         }
