@@ -118,25 +118,7 @@ class _signupState extends State<signup> {
 
   TextButton signimbutton() {
     return TextButton(
-      onPressed: () async {
-        if (formkey.currentState!.validate()) {
-          formkey.currentState!.save();
-          try {
-            var userresult = await firebaseAuth.createUserWithEmailAndPassword(
-                email: email, password: password);
-            print(userresult.user!.uid);
-            formkey.currentState!.reset();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("giriş yapıldı,anasayfaya yonlendırılıyosunuz."),
-              ),
-            );
-            Navigator.pushReplacementNamed(context, "/loginpage"); 
-          } catch (e) {}  
-        } else {
-          print(e.toString());
-        }
-      },
+      onPressed: signin,
       child: Container(
         height: 50,
         width: 150,
@@ -152,6 +134,26 @@ class _signupState extends State<signup> {
       ),
     );
   }
+
+  void signin() async {
+      if (formkey.currentState!.validate()) {
+        formkey.currentState!.save();
+        try {
+          var userresult = await firebaseAuth.createUserWithEmailAndPassword(
+              email: email, password: password);
+          print(userresult.user!.uid);
+          formkey.currentState!.reset();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("giriş yapıldı,anasayfaya yonlendırılıyosunuz."),
+            ),
+          );
+          Navigator.pushReplacementNamed(context, "/loginpage"); 
+        } catch (e) {}  
+      } else {
+        print(e.toString());
+      }
+    }
 
   TextButton backtologinpage() {
     return TextButton(

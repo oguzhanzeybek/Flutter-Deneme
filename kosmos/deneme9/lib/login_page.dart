@@ -11,110 +11,120 @@ class Login_Page extends StatefulWidget {
 }
 
 class _Login_PageState extends State<Login_Page> {
+  late String email, password;
+  final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            titleText(),
-            Row(
+        
+          
+          child: Form(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Container(
-                    height: 120,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 34, 1, 125),
+                titleText(),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 120,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 34, 1, 125),
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: Container(
+                        height: 60,
+                        width: 220,
+                        decoration:
+                            BoxDecoration(color: Color.fromARGB(255, 4, 15, 102)),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration:
+                            BoxDecoration(color: Color.fromARGB(255, 129, 25, 113)),
+                        height: 200,
+                      ),
+                    )
+                  ],
                 ),
-                Expanded(
-                  child: Container(
-                    height: 60,
-                    width: 220,
-                    decoration:
-                        BoxDecoration(color: Color.fromARGB(255, 4, 15, 102)),
-                  ),
+                SizedBox(
+                  height: 25,
                 ),
-                Expanded(
-                  child: Container(
-                    decoration:
-                        BoxDecoration(color: Color.fromARGB(255, 129, 25, 113)),
-                    height: 200,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      titletextfield(),
+                      space15(),
+                      passwordtextfield(),
+                      space15(),
+                      passwordtextfield(),
+                      space15(),
+                      Center(
+                        child: forgotpasswordtext(),
+                      ),
+                      space15(),
+                      Center(
+                        child: lognintext(),
+                      ),
+                      Center(
+                        child: signinbutton(),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 45, 7, 201)),
+                              height: 200,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 129, 25, 124)),
+                              height: 40,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 120,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 34, 1, 125),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 )
               ],
             ),
-            SizedBox(
-              height: 25,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  titletextfield(),
-                  space15(),
-                  usernametextfield(),
-                  space15(),
-                  passwordtextfield(),
-                  space15(),
-                  Center(
-                    child: forgotpasswordtext(),
-                  ),
-                  space15(),
-                  Center(
-                    child: lognintext(),
-                  ),
-                  Center(
-                    child: signinbutton(),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 45, 7, 201)),
-                          height: 200,
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 129, 25, 124)),
-                          height: 40,
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 120,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 34, 1, 125),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          ),
+        
       ),
     );
   }
 
   Center signinbutton() {
-    return Center( 
+    return Center(
       child: TextButton(
-        onPressed: (() {Navigator.push(context,  MaterialPageRoute(builder: ((context) => signup()))  );}),
+        onPressed: (() {
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => signup())));
+        }),
         child: Text(
           "Kayıt Ol",
           style: TextStyle(
@@ -128,7 +138,12 @@ class _Login_PageState extends State<Login_Page> {
 
   TextButton lognintext() {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        
+        if(formkey.currentState!.validate()){
+         formkey.currentState!.save();
+        } else{}
+      },
       child: Container(
         height: 50,
         width: 150,
@@ -166,8 +181,17 @@ class _Login_PageState extends State<Login_Page> {
     );
   }
 
-  TextField passwordtextfield() {
-    return TextField(
+  TextFormField passwordtextfield() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "bilgileri eksiksiz doldur";
+        } else {}
+      },
+      onSaved: (value) {
+        password = value!;
+      },
+      obscureText: true,
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
       ),
@@ -183,13 +207,20 @@ class _Login_PageState extends State<Login_Page> {
     );
   }
 
-  TextField usernametextfield() {
-    return TextField(
+  TextFormField emailtextfield() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "bilgileri eksiksiz doldur";
+        } else {}
+      },
+      onSaved: (value) {
+        email = value!;
+      },
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
       ),
-      decoration:
-          custominputdecoration("kullanıcı adı", Colors.white, Colors.white),
+      decoration: custominputdecoration("E-Mail ", Colors.white, Colors.white),
     );
   }
 
