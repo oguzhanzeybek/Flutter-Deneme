@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/home_page.dart';
 import 'package:flutter_application_9/login_page.dart';
 
 import 'package:flutter_application_9/sign_up.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/loginpage": (context) =>  LoginPage(),
         "/SignUp": (context) =>  SignUp(),
+        "/homepage" :(context) => HomePage(),
 
       },
       home: LoginPage(),

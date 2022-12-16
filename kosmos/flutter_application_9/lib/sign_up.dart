@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors,
 
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +20,7 @@ class _SignUpState extends State<SignUp> {
   final firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    //var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
@@ -146,11 +146,14 @@ class _SignUpState extends State<SignUp> {
           formkey.currentState!.reset();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("Kayit Yapildi yapildi,anasayfaya yonlendırılıyosunuz."),
+              content: Text("Kayit yapildi,anasayfaya yonlendiriliyosunuz."),
             ),
           );
-          Navigator.pushReplacementNamed(context, "/loginpage"); 
-        } catch (e) {}  
+          Navigator.pushReplacementNamed(context, "/loginpage");
+        } catch (e) {
+          print("object");
+        };  
+         
       } else {
         print(e.toString());
       }
@@ -180,7 +183,7 @@ class _SignUpState extends State<SignUp> {
 
   Text titletextfield() {
     return Text(
-      "Kayıt Olma Sayfası",
+      "Kayit Olma Sayfasi",
       style: TextStyle(
           fontSize: 33.0, fontWeight: FontWeight.bold, color: Colors.white),
     );
@@ -191,7 +194,7 @@ class _SignUpState extends State<SignUp> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } return "";
+        } else {}
       },
       onSaved: (value) {
         email = value!;
@@ -208,7 +211,7 @@ class _SignUpState extends State<SignUp> {
       validator: (value)  {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } return "";
+        } else {}
       },
       onSaved: (value) {
         password = value!;
