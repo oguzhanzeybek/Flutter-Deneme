@@ -1,28 +1,32 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/sign_up.dart';
 import 'package:flutter/material.dart';
 
-class Login_Page extends StatefulWidget {
-  const Login_Page({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<Login_Page> createState() => _Login_PageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _Login_PageState extends State<Login_Page> {
+class _LoginPageState extends State<LoginPage> {
   late String email, password;
-  final _formkey = GlobalKey<FormState>();
-  final FormState formState= _formkey.currentState;
+  final formkey = GlobalKey<FormState>();
+  final firebaseAuth = FirebaseAuth.instance;
+ 
+
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    //var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0), 
       body: SingleChildScrollView(
         
           
           child: Form(
+            key: formkey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -124,10 +128,10 @@ class _Login_PageState extends State<Login_Page> {
       child: TextButton(
         onPressed: (() {
           Navigator.push(
-              context, MaterialPageRoute(builder: ((context) => signup())));
+              context, MaterialPageRoute(builder: ((context) => SignUp())));
         }),
         child: Text(
-          "Kayıt Ol",
+          "Kayit Ol",
           style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
               fontSize: 19,
@@ -141,13 +145,11 @@ class _Login_PageState extends State<Login_Page> {
     return TextButton(
       onPressed: () {
         
-        /*if(formkey.currentState!.validate()){
+        if(formkey.currentState!.validate()){
          formkey.currentState!.save();
-         Navigator.push(
-              context, MaterialPageRoute(builder: ((context) => signup())));
-        } */
-        Navigator.push(
-              context, MaterialPageRoute(builder: ((context) => signup())));
+        
+        } 
+        
       },
       child: Container(
         height: 50,
@@ -191,7 +193,7 @@ class _Login_PageState extends State<Login_Page> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        } return "";
       },
       onSaved: (value) {
         password = value!;
@@ -203,6 +205,7 @@ class _Login_PageState extends State<Login_Page> {
       decoration: custominputdecoration("şifre", Colors.white, Colors.white),
     );
   }
+
 
   Text titletextfield() {
     return Text(
@@ -217,7 +220,8 @@ class _Login_PageState extends State<Login_Page> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        } return "";
+        
       },
       onSaved: (value) {
         email = value!;

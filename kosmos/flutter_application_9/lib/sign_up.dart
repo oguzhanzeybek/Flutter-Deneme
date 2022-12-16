@@ -7,20 +7,20 @@ import 'package:flutter_application_9/login_page.dart';
 
 import 'package:flutter/material.dart';
 
-class signup extends StatefulWidget {
-  const signup({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<signup> createState() => _signupState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _signupState extends State<signup> {
+class _SignUpState extends State<SignUp> {
   late String email, password;
   final formkey = GlobalKey<FormState>();
   final firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    //var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
@@ -120,7 +120,7 @@ class _signupState extends State<signup> {
   TextButton signimbutton() {
     return TextButton(
       onPressed: signin,
-      child: Container(
+      child: SizedBox(
         height: 50,
         width: 150,
         child: Center(
@@ -146,7 +146,7 @@ class _signupState extends State<signup> {
           formkey.currentState!.reset();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("giriş yapıldı,anasayfaya yonlendırılıyosunuz."),
+              content: Text("Kayit Yapildi yapildi,anasayfaya yonlendırılıyosunuz."),
             ),
           );
           Navigator.pushReplacementNamed(context, "/loginpage"); 
@@ -160,9 +160,9 @@ class _signupState extends State<signup> {
     return TextButton(
       onPressed: () {
         Navigator.pop(
-            context, MaterialPageRoute(builder: ((context) => Login_Page())));
+            context, MaterialPageRoute(builder: ((context) => LoginPage())));
       },
-      child: Container(
+      child: SizedBox(
         height: 50,
         width: 150,
         child: Center(
@@ -191,7 +191,7 @@ class _signupState extends State<signup> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        } return "";
       },
       onSaved: (value) {
         email = value!;
@@ -205,10 +205,10 @@ class _signupState extends State<signup> {
 
   TextFormField passwordtextfield() {
     return TextFormField(
-      validator: (value) {
+      validator: (value)  {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        } return "";
       },
       onSaved: (value) {
         password = value!;

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/login_page.dart';
 
@@ -8,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 
 import 'firebase_options.dart';
+
 
 
 void main() async {
@@ -29,11 +32,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "projem",
       routes: {
-        "/loginpage": (context) =>  Login_Page(),
-        "/signup": (context) =>  signup(),
+        "/loginpage": (context) =>  LoginPage(),
+        "/SignUp": (context) =>  SignUp(),
 
       },
-      home: Login_Page(),
+      home: LoginPage(),
     );
   }
 }
