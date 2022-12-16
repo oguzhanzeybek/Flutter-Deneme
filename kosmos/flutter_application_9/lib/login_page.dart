@@ -76,12 +76,17 @@ class _LoginPageState extends State<LoginPage> {
                     forgotpasswordtext(),
                     space15(),
                     lognintext(),
-                    CustomTextButton(
-                        onPressed: (() => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => SignUp())))),
-                        buttonText: "Hesap oluştur",textcolor:Colors.pink,),
+                    Center(
+                      child: CustomTextButton(
+                        onPressed: (() => Navigator.push(context,
+                            MaterialPageRoute(builder: ((context) => SignUp())))),
+                        buttonText: "Hesap oluştur",
+                        textcolor: Colors.white,
+                        
+                        
+                      ),
+                    ),
+                    Center(child: CustomTextButton(onPressed: (){}, buttonText: "misafir girişi",textcolor:Colors.white)),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
