@@ -90,18 +90,21 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Center(
-                        child: CustomTextButton(
-                            onPressed: () async {
-                              final result = await AuthService.signInAnonymos();
-                              if (result != null) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: ((context) => HomePage())));
-                              } else{ print("hata ile karsilasildi");}
-                            },
-                            buttonText: "misafir girişi",
-                            textcolor: Colors.white)),
+                      child: CustomTextButton(
+                          onPressed: () async {
+                            final result = await AuthService.signInAnonymos();
+                            if (result != null) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => HomePage())));
+                            } else {
+                              print("hata ile karsilasildi");
+                            }
+                          },
+                          buttonText: "misafir girişi",
+                          textcolor: Colors.white),
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -197,7 +200,15 @@ class _LoginPageState extends State<LoginPage> {
 
   TextButton forgotpasswordtext() {
     return TextButton(
-      onPressed: () {},
+      onPressed: () async {
+        Future forgotPassword(String email) async {
+          try {
+            final result =
+                await firebaseAuth.sendPasswordResetEmail(email: email);
+            print("mail kutunuzu kontrol ediniz");
+          } catch (e) {}
+        }
+      },
       child: Center(
         child: Container(
           height: 50,
