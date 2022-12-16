@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/home_page.dart';
+import 'package:flutter_application_9/service/auth_service.dart';
 import 'package:flutter_application_9/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/widgets/custom_text_button.dart';
@@ -17,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   late String email, password;
   final formkey = GlobalKey<FormState>();
   final firebaseAuth = FirebaseAuth.instance;
-
+  final AuthService = authService();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -78,15 +79,29 @@ class _LoginPageState extends State<LoginPage> {
                     lognintext(),
                     Center(
                       child: CustomTextButton(
-                        onPressed: (() => Navigator.push(context,
-                            MaterialPageRoute(builder: ((context) => SignUp())))),
+                        onPressed: (() => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: ((context) => SignUp()),
+                              ),
+                            )),
                         buttonText: "Hesap oluştur",
                         textcolor: Colors.white,
-                        
-                        
                       ),
                     ),
-                    Center(child: CustomTextButton(onPressed: (){}, buttonText: "misafir girişi",textcolor:Colors.white)),
+                    Center(
+                        child: CustomTextButton(
+                            onPressed: () async {
+                              final result = await AuthService.signInAnonymos();
+                              if (result != null) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) => HomePage())));
+                              } else{ print("hata ile karsilasildi");}
+                            },
+                            buttonText: "misafir girişi",
+                            textcolor: Colors.white)),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
