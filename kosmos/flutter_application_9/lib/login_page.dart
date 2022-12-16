@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/home_page.dart';
 import 'package:flutter_application_9/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/widgets/custom_text_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-     var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
@@ -72,16 +73,15 @@ class _LoginPageState extends State<LoginPage> {
                     space15(),
                     passwordtextfield(),
                     space15(),
-                    Center(
-                      child: forgotpasswordtext(),
-                    ),
+                    forgotpasswordtext(),
                     space15(),
-                    Center(
-                      child: lognintext(),
-                    ),
-                    Center(
-                      child: signinbutton(),
-                    ),
+                    lognintext(),
+                    CustomTextButton(
+                        onPressed: (() => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => SignUp())))),
+                        buttonText: "Hesap oluştur",textcolor:Colors.pink,),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -140,51 +140,57 @@ class _LoginPageState extends State<LoginPage> {
 
   TextButton lognintext() {
     return TextButton(
-      onPressed: () async {
-        if (formkey.currentState!.validate()) {
-          formkey.currentState!.save();
-          try {
-            final userResult = await firebaseAuth.signInWithEmailAndPassword(
-                email: email, password: password);
-                Navigator.push(
-              context, MaterialPageRoute(builder: ((context) => HomePage())));
-            print(userResult.user!.email);
-          } catch (e) {
-            print(e.toString());
-          }
-        } else {}
-      },
-      child: Container(
-        height: 50,
-        width: 150,
-        margin: EdgeInsets.symmetric(horizontal: 60),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(60),
-        ),
-        child: Center(
-          child: Text(
-            "Giriş Yapp",
-            style: TextStyle(color: Colors.white, fontSize: 19),
+      onPressed: signin,
+      child: Center(
+        child: Container(
+          height: 50,
+          width: 150,
+          margin: EdgeInsets.symmetric(horizontal: 60),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(60),
+          ),
+          child: Center(
+            child: Text(
+              "Giriş Yapp",
+              style: TextStyle(color: Colors.white, fontSize: 19),
+            ),
           ),
         ),
       ),
     );
   }
 
+  void signin() async {
+    if (formkey.currentState!.validate()) {
+      formkey.currentState!.save();
+      try {
+        final userResult = await firebaseAuth.signInWithEmailAndPassword(
+            email: email, password: password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: ((context) => HomePage())));
+        print(userResult.user!.email);
+      } catch (e) {
+        print(e.toString());
+      }
+    } else {}
+  }
+
   TextButton forgotpasswordtext() {
     return TextButton(
       onPressed: () {},
-      child: Container(
-        height: 50,
-        width: 150,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(60)),
-        child: Center(
-          child: Text(
-            "Şifremi unuttum",
-            style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
-                fontSize: 19,
-                fontWeight: FontWeight.w400),
+      child: Center(
+        child: Container(
+          height: 50,
+          width: 150,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(60)),
+          child: Center(
+            child: Text(
+              "Şifremi unuttum",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontSize: 19,
+                  fontWeight: FontWeight.w400),
+            ),
           ),
         ),
       ),
