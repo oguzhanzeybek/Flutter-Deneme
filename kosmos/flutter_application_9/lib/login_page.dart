@@ -12,12 +12,13 @@ class Login_Page extends StatefulWidget {
 
 class _Login_PageState extends State<Login_Page> {
   late String email, password;
-  final formkey = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
+  final FormState formState= _formkey.currentState;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: Color.fromARGB(255, 0, 0, 0), 
       body: SingleChildScrollView(
         
           
@@ -65,7 +66,7 @@ class _Login_PageState extends State<Login_Page> {
                     children: [
                       titletextfield(),
                       space15(),
-                      passwordtextfield(),
+                      emailtextfield(),
                       space15(),
                       passwordtextfield(),
                       space15(),
@@ -140,9 +141,13 @@ class _Login_PageState extends State<Login_Page> {
     return TextButton(
       onPressed: () {
         
-        if(formkey.currentState!.validate()){
+        /*if(formkey.currentState!.validate()){
          formkey.currentState!.save();
-        } else{}
+         Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => signup())));
+        } */
+        Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => signup())));
       },
       child: Container(
         height: 50,
