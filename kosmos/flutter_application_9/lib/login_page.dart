@@ -160,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         child: Center(
           child: Text(
-            "Giriş Yap",
+            "Giriş Yapp",
             style: TextStyle(color: Colors.white, fontSize: 19),
           ),
         ),
