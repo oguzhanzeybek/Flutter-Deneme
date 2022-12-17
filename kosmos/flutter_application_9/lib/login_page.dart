@@ -194,6 +194,11 @@ class _LoginPageState extends State<LoginPage> {
       final result = await authService.signIn(email,password);
       if(result=="succses"){
 
+          Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => HomePage())));
+
       } else{
         showDialog(context: context, builder:(context){
           return AlertDialog(
