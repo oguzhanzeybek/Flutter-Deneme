@@ -1,9 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-
-
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/home_page.dart';
 import 'package:flutter_application_9/service/auth_service.dart';
@@ -25,7 +21,6 @@ class _LoginPageState extends State<LoginPage> {
   final authService = AuthService();
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
@@ -188,29 +183,29 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void signin() async {
-     
     if (formkey.currentState!.validate()) {
       formkey.currentState!.save();
-      final result = await authService.signIn(email,password);
-      if(result=="succses"){
-
-          Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: ((context) => HomePage())));
-
-      } else{
-        showDialog(context: context, builder:(context){
-          return AlertDialog(
-            title: Text("HATA"),
-            content: Text(result!),
-          );
-        });
+      final result = await authService.signIn(email, password);
+      if (result == "succses") {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: ((context) => HomePage())),
+            (route) => false);
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text("HATA"),
+                content: Text(result!),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text("geri dön"))
+                ],
+              );
+            });
       }
-    
-  
-     
-    } 
+    }
   }
 
   TextButton forgotpasswordtext() {
@@ -221,7 +216,9 @@ class _LoginPageState extends State<LoginPage> {
             final result =
                 await firebaseAuth.sendPasswordResetEmail(email: email);
             print("mail kutunuzu kontrol ediniz");
-          } catch (e) {return null;}
+          } catch (e) {
+            return null;
+          }
         }
       },
       child: Center(
@@ -248,9 +245,8 @@ class _LoginPageState extends State<LoginPage> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else{}
+        } else {}
         return null;
-        
       },
       onSaved: (value) {
         password = value!;
@@ -276,11 +272,12 @@ class _LoginPageState extends State<LoginPage> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else{return null;}
-        
+        } else {
+          return null;
+        }
       },
-      onSaved: (value)  {
-        email =  value!;
+      onSaved: (value) {
+        email = value!;
       },
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
