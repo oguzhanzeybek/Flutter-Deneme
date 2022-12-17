@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors,
+// ignore_for_file: prefer_const_constructors,,, avoid_print
 
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +20,7 @@ class _SignUpState extends State<SignUp> {
   final firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    //var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
@@ -144,15 +144,15 @@ class _SignUpState extends State<SignUp> {
               email: email, password: password);
           print(userresult.user!.uid);
           formkey.currentState!.reset();
-          ScaffoldMessenger.of(context).showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Kayit yapildi,anasayfaya yonlendiriliyosunuz."),
             ),
           );
           Navigator.pushReplacementNamed(context, "/loginpage");
-        } catch (e) {
-          print("object");
-        };  
+        } catch (e) {return null;}
+         
+        
          
       } else {
         print(e.toString());
@@ -194,10 +194,12 @@ class _SignUpState extends State<SignUp> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        }  else{}
+        return null;
+        
       },
       onSaved: (value) {
-        email = value!;
+        email =  value!;
       },
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
@@ -208,10 +210,12 @@ class _SignUpState extends State<SignUp> {
 
   TextFormField passwordtextfield() {
     return TextFormField(
-      validator: (value)  {
+      validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        }  else{}
+        return null;
+        
       },
       onSaved: (value) {
         password = value!;

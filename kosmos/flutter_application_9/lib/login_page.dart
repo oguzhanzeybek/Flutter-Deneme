@@ -1,5 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+
+
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_9/home_page.dart';
 import 'package:flutter_application_9/service/auth_service.dart';
@@ -18,10 +22,10 @@ class _LoginPageState extends State<LoginPage> {
   late String email, password;
   final formkey = GlobalKey<FormState>();
   final firebaseAuth = FirebaseAuth.instance;
-  final AuthService = authService();
+  final authService = AuthService();
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: SingleChildScrollView(
@@ -92,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     Center(
                       child: CustomTextButton(
                           onPressed: () async {
-                            final result = await AuthService.signInAnonymos();
+                            final result = await authService.signInAnonymos();
                             if (result != null) {
                               Navigator.push(
                                   context,
@@ -184,11 +188,24 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void signin() async {
+     
     if (formkey.currentState!.validate()) {
       formkey.currentState!.save();
-     final result = await AuthService.SignIn(email,password);
-     print(result);
-    } else {}
+      final result = await authService.signIn(email,password);
+      if(result=="succses"){
+
+      } else{
+        showDialog(context: context, builder:(context){
+          return AlertDialog(
+            title: Text("HATA"),
+            content: Text(result!),
+          );
+        });
+      }
+    
+  
+     
+    } 
   }
 
   TextButton forgotpasswordtext() {
@@ -199,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
             final result =
                 await firebaseAuth.sendPasswordResetEmail(email: email);
             print("mail kutunuzu kontrol ediniz");
-          } catch (e) {}
+          } catch (e) {return null;}
         }
       },
       child: Center(
@@ -226,7 +243,9 @@ class _LoginPageState extends State<LoginPage> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        } else{}
+        return null;
+        
       },
       onSaved: (value) {
         password = value!;
@@ -252,10 +271,11 @@ class _LoginPageState extends State<LoginPage> {
       validator: (value) {
         if (value!.isEmpty) {
           return "bilgileri eksiksiz doldur";
-        } else {}
+        } else{return null;}
+        
       },
-      onSaved: (value) {
-        email = value!;
+      onSaved: (value)  {
+        email =  value!;
       },
       style: TextStyle(
         color: Color.fromARGB(255, 255, 255, 255),
