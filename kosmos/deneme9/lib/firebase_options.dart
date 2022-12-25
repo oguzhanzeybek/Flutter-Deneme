@@ -44,39 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAQaJTSxZZQrbKAvjMFdrgHtGWYzcBX2uE',
-    appId: '1:425313425649:web:911b3d948589165bf87150',
-    messagingSenderId: '425313425649',
-    projectId: 'ooo-aa-s-a-s',
-    authDomain: 'ooo-aa-s-a-s.firebaseapp.com',
-    storageBucket: 'ooo-aa-s-a-s.appspot.com',
+    apiKey: 'AIzaSyBMUrWWaucBkpDfoK-zOwc5YYODGCjqcrI',
+    appId: '1:302148662646:web:543fd780ffbe3fd5f07657',
+    messagingSenderId: '302148662646',
+    projectId: 'wireworks-9ef30',
+    authDomain: 'wireworks-9ef30.firebaseapp.com',
+    storageBucket: 'wireworks-9ef30.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCTWkyjhz5kXiMDDRsHHuXa08zI4AttTKs',
-    appId: '1:425313425649:android:2db4161f61b31435f87150',
-    messagingSenderId: '425313425649',
-    projectId: 'ooo-aa-s-a-s',
-    storageBucket: 'ooo-aa-s-a-s.appspot.com',
+    apiKey: 'AIzaSyCE-RxSwYutQdIfPTUw6K6gy3Tz96OcVhI',
+    appId: '1:302148662646:android:1e830eec343cda88f07657',
+    messagingSenderId: '302148662646',
+    projectId: 'wireworks-9ef30',
+    storageBucket: 'wireworks-9ef30.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD1zTug2R88xy81b7jzcQ3IiM7dx9VGDzo',
-    appId: '1:425313425649:ios:f73b6d2e8ac27d9ff87150',
-    messagingSenderId: '425313425649',
-    projectId: 'ooo-aa-s-a-s',
-    storageBucket: 'ooo-aa-s-a-s.appspot.com',
-    iosClientId: '425313425649-1jute48i14qfivh9r000h0ae7rrgkbrg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBDlKwASC80lSoAVZ0KX8m6w1ggiezJUeg',
+    appId: '1:302148662646:ios:47a289056a187e08f07657',
+    messagingSenderId: '302148662646',
+    projectId: 'wireworks-9ef30',
+    storageBucket: 'wireworks-9ef30.appspot.com',
+    iosClientId: '302148662646-asd4t10rv3jpf8v3kt1tf5ur88tqr9in.apps.googleusercontent.com',
     iosBundleId: 'com.example.deneme9',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD1zTug2R88xy81b7jzcQ3IiM7dx9VGDzo',
-    appId: '1:425313425649:ios:f73b6d2e8ac27d9ff87150',
-    messagingSenderId: '425313425649',
-    projectId: 'ooo-aa-s-a-s',
-    storageBucket: 'ooo-aa-s-a-s.appspot.com',
-    iosClientId: '425313425649-1jute48i14qfivh9r000h0ae7rrgkbrg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBDlKwASC80lSoAVZ0KX8m6w1ggiezJUeg',
+    appId: '1:302148662646:ios:47a289056a187e08f07657',
+    messagingSenderId: '302148662646',
+    projectId: 'wireworks-9ef30',
+    storageBucket: 'wireworks-9ef30.appspot.com',
+    iosClientId: '302148662646-asd4t10rv3jpf8v3kt1tf5ur88tqr9in.apps.googleusercontent.com',
     iosBundleId: 'com.example.deneme9',
   );
 }
